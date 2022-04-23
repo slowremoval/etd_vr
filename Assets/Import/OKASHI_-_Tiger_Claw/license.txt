@@ -1,0 +1,11 @@
+Model Information:
+* title:	OKASHI - Tiger Claw
+* source:	https://sketchfab.com/3d-models/okashi-tiger-claw-7508d10efbe64e9c8cc087bc9206df04
+* author:	Mavis_Hart (https://sketchfab.com/mhart37)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "OKASHI - Tiger Claw" (https://sketchfab.com/3d-models/okashi-tiger-claw-7508d10efbe64e9c8cc087bc9206df04) by Mavis_Hart (https://sketchfab.com/mhart37) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
