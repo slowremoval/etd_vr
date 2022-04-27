@@ -1107,6 +1107,15 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""754dbcc1-b4f5-4ef9-b629-0a2eb8d0fa5a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1162,6 +1171,17 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bafa5a36-01bb-4b83-a81f-96feec0abd23"",
+                    ""path"": ""<OculusTouchController>{RightHand}/thumbstickClicked"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1282,6 +1302,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         m_XRIRightHandLocomotion_TeleportModeCancel = m_XRIRightHandLocomotion.FindAction("Teleport Mode Cancel", throwIfNotFound: true);
         m_XRIRightHandLocomotion_Turn = m_XRIRightHandLocomotion.FindAction("Turn", throwIfNotFound: true);
         m_XRIRightHandLocomotion_Move = m_XRIRightHandLocomotion.FindAction("Move", throwIfNotFound: true);
+        m_XRIRightHandLocomotion_Jump = m_XRIRightHandLocomotion.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1768,6 +1789,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     private readonly InputAction m_XRIRightHandLocomotion_TeleportModeCancel;
     private readonly InputAction m_XRIRightHandLocomotion_Turn;
     private readonly InputAction m_XRIRightHandLocomotion_Move;
+    private readonly InputAction m_XRIRightHandLocomotion_Jump;
     public struct XRIRightHandLocomotionActions
     {
         private @XRIDefaultInputActions m_Wrapper;
@@ -1777,6 +1799,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         public InputAction @TeleportModeCancel => m_Wrapper.m_XRIRightHandLocomotion_TeleportModeCancel;
         public InputAction @Turn => m_Wrapper.m_XRIRightHandLocomotion_Turn;
         public InputAction @Move => m_Wrapper.m_XRIRightHandLocomotion_Move;
+        public InputAction @Jump => m_Wrapper.m_XRIRightHandLocomotion_Jump;
         public InputActionMap Get() { return m_Wrapper.m_XRIRightHandLocomotion; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1801,6 +1824,9 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @Move.started -= m_Wrapper.m_XRIRightHandLocomotionActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_XRIRightHandLocomotionActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_XRIRightHandLocomotionActionsCallbackInterface.OnMove;
+                @Jump.started -= m_Wrapper.m_XRIRightHandLocomotionActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_XRIRightHandLocomotionActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_XRIRightHandLocomotionActionsCallbackInterface.OnJump;
             }
             m_Wrapper.m_XRIRightHandLocomotionActionsCallbackInterface = instance;
             if (instance != null)
@@ -1820,6 +1846,9 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
         }
     }
@@ -1910,5 +1939,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         void OnTeleportModeCancel(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }

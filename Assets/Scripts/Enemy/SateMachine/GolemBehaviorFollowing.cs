@@ -10,6 +10,7 @@ public class GolemBehaviorFollowing : IGolemBehaviorTarget
     //private IGolemBehaviorTarget _golemBehaviorTargetImplementation;
     private GolemStates _golemStates;
     private UnitFollower _unitFollower;
+    private float _stoppingDistance = 1f;
 
     public GolemBehaviorFollowing(Animator animator, Transform pelvisTransform, ConfigurableJoint configurableJoint, GolemStates golemStates)
     {
@@ -28,7 +29,7 @@ public class GolemBehaviorFollowing : IGolemBehaviorTarget
     {
         _targetTransform = target;
         _animator.CrossFade(animationHash, 0.1f);
-        _unitFollower = new UnitFollower(_configurableJoint, _pelvisTransform, target);
+        _unitFollower = new UnitFollower(_configurableJoint, _pelvisTransform, target, _stoppingDistance);
         //Debug.Log(_animator == null);
         Debug.Log("Golem WALKING Enter");
     }
@@ -51,7 +52,7 @@ public class GolemBehaviorFollowing : IGolemBehaviorTarget
 
         float distance = Vector3.Distance(_targetTransform.position, _pelvisTransform.position);
         
-        if (distance <= 1.15f)
+        if (distance <= _stoppingDistance)
         {
             _golemStates.SetGolemBehaviorAggressive();
             _unitFollower.StopPathFollowingTask();

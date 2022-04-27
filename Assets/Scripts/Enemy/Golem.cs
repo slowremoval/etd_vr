@@ -15,34 +15,31 @@ public class Golem : MonoBehaviour
     private bool _isDied;
     [SerializeField] private Transform _pelvisTransform;
 
-    [Header("Joints")]
-    [SerializeField] private ConfigurableJoint _configurableJoint;
+    [Header("Joints")] [SerializeField] private ConfigurableJoint _configurableJoint;
     [SerializeField] private PhysicalBodyPart _leftArmJoint;
     [SerializeField] private PhysicalBodyPart _rightArmJoint;
     [SerializeField] private PhysicalBodyPart _leftLegJoint;
     [SerializeField] private PhysicalBodyPart _rightLegJoint;
 
-    [Header("Detection Properties")]
-    public LayerMask DetectionLayer;
+    [Header("Detection Properties")] public LayerMask DetectionLayer;
     public LayerMask DetectionObstacles;
     public float DetectionRadius;
     public float MinimumDirectionAngle;
     public float MaximumDirectionAngle;
     public Transform CurrentTarget;
 
-    
-    
-    public Transform EscapePoint;
-    
+    //public Transform EscapePoint;
+
     private void Awake()
     {
         _detectionManager = new DetectionManager(this);
         _animator = GetComponentInChildren<Animator>();
-        _golemStates = new GolemStates(_animator, _pelvisTransform, _configurableJoint, _detectionManager);
+        _golemStates = new GolemStates(_animator, _pelvisTransform, _configurableJoint,
+            _detectionManager);
         _integrityManager = new IntegrityManager(
-            this, _golemStates, _leftArmJoint, 
+            this, _golemStates, _leftArmJoint,
             _rightArmJoint, _leftLegJoint, _rightLegJoint);
-        
+
         _detectionManager.OnTargetDetected += SetCurrentTarget;
         _integrityManager.OnSomethingBroken += ResetCurrentTarget;
     }
@@ -51,7 +48,7 @@ public class Golem : MonoBehaviour
     {
         CurrentTarget = null;
 
-        if (_integrityManager._rightLegDestroyed && 
+        if (_integrityManager._rightLegDestroyed &&
             _integrityManager._leftLegDestroyed &&
             _integrityManager._leftArmDestroyed &&
             _integrityManager._rightArmDestroyed)
@@ -59,7 +56,7 @@ public class Golem : MonoBehaviour
             //_isDied = true;
             Destroy(_configurableJoint);
         }
-        else if (_integrityManager._rightLegDestroyed || 
+        else if (_integrityManager._rightLegDestroyed ||
                  _integrityManager._leftLegDestroyed)
         {
             _golemStates.SetBehaviorIdleWithoutLeg();
@@ -69,7 +66,7 @@ public class Golem : MonoBehaviour
         {
             _golemStates.SetGolemBehaviorIdle();
         }
-        
+
         Debug.Log("Current target is cleared!");
     }
 
@@ -92,5 +89,4 @@ public class Golem : MonoBehaviour
     {
         _golemStates?._behaviorCurrent.Update();
     }
-
 }

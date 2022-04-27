@@ -9,23 +9,27 @@ public class GrapplingGun : MonoBehaviour
     private Vector3 _grapplePoint;
     private Vector2 _rightJoystickValues;
     private Rigidbody _playerRb;
-    
+
     public AimVisualizer _aimVisualizer;
 
     private const float _joystickValueScaler = 0.042f;
     private const float _startMinDistanceScaler = 0.15f;
     private const float _startMaxDistanceScaler = 0.85f;
 
-    [Header("Grapple properties")] 
-    [SerializeField] private LayerMask WhatIsGrappleable;
+    [Header("Grapple properties")] [SerializeField]
+    private LayerMask WhatIsGrappleable;
+
     [SerializeField] private float MaxDistance = 17;
     [SerializeField] private float SpringForce = 90;
     [SerializeField] private float SpringDamper = 9;
     [SerializeField] private GameObject Aim;
-    
+
     public Transform GunTip, Player;
 
     [HideInInspector] public HandControllerInput activeHandControllerInput;
+    private GrapplingRope _grapplingRope;
+    public AnimationCurve AffectCurve;
+    private LineRenderer _lineRenderer;
 
     [Inject]
     private void Construct(Inventory playerInventory)
@@ -34,11 +38,14 @@ public class GrapplingGun : MonoBehaviour
         Player = playerInventory.transform;
         Debug.Log($"PlayerRb is : {_playerRb}");
     }
-    
+
     private void Awake()
     {
         _aimVisualizer = new AimVisualizer(Aim, GunTip, MaxDistance, WhatIsGrappleable);
-        //_grapplingRope = new GrapplingRope(AffectCurve, this, _lineRenderer);
+
+        _lineRenderer = GetComponent<LineRenderer>();
+
+        _grapplingRope = new GrapplingRope(AffectCurve, this, _lineRenderer);
     }
 
     private void FixedUpdate()
@@ -64,6 +71,7 @@ public class GrapplingGun : MonoBehaviour
     private void LateUpdate()
     {
         _aimVisualizer.Aiming();
+        _grapplingRope.DrawRope();
     }
 
     public void StartGrapple()

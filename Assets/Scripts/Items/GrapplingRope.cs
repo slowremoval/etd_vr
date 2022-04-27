@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class GrapplingRope : MonoBehaviour
+public class GrapplingRope
 {
     private LineRenderer _lineRenderer;
-    private Vector3 _currentGrapplePosition;
+    private Vector3 _currentGrappleLocalPosition;
     private Spring _spring;
     
     public GrapplingGun GrapplingGun;
@@ -14,34 +14,29 @@ public class GrapplingRope : MonoBehaviour
     private float Strength = 150;
     private float Velocity = 13;
     private float WaveCount = 3;
-    private float WaveHeight = 1;
+    private float WaveHeight = 11;
     public AnimationCurve AffectCurve;
 
-    // public GrapplingRope(AnimationCurve affectCurve, GrapplingGun grapplingGun, LineRenderer lineRenderer)
-    // {
-    //     AffectCurve = affectCurve;
-    //     GrapplingGun = grapplingGun;
-    //     _lineRenderer = lineRenderer;
-    // }
-    
-    private void Awake()
+    public GrapplingRope(AnimationCurve affectCurve, GrapplingGun grapplingGun, LineRenderer lineRenderer)
     {
-        _lineRenderer = GetComponent<LineRenderer>();
+        AffectCurve = affectCurve;
+        GrapplingGun = grapplingGun;
+        _lineRenderer = lineRenderer;
+        Initialize();
+    }
+    
+    private void Initialize()
+    {
         _lineRenderer.enabled = true;
         _spring = new Spring();
         _spring.SetTarget(0);
     }
-
-    void LateUpdate()
-    {
-        DrawRope();
-    }
     
-    private void DrawRope()
+    public void DrawRope()
     {
         if (!GrapplingGun.IsGrappling())
         {
-            _currentGrapplePosition = GrapplingGun.GunTip.position;
+            _currentGrappleLocalPosition = GrapplingGun.GunTip.transform.position;
             _spring.Reset();
             
             if (_lineRenderer.positionCount > 0)
@@ -56,7 +51,7 @@ public class GrapplingRope : MonoBehaviour
             _spring.SetVelocity(Velocity);
             _lineRenderer.positionCount = RopePoints + 1;
         }
-        
+
         _spring.SetDamper(Damper);
         _spring.SetStrength(Strength);
         _spring.Update(Time.deltaTime);
@@ -65,7 +60,7 @@ public class GrapplingRope : MonoBehaviour
         Vector3 gunTipPosition = GrapplingGun.GunTip.position;
         Vector3 up = Quaternion.LookRotation(grapplePoint - gunTipPosition).normalized * Vector3.up;
         
-        _currentGrapplePosition = Vector3.Lerp(_currentGrapplePosition, grapplePoint, Time.deltaTime * 12f);
+        _currentGrappleLocalPosition = Vector3.Lerp(_currentGrappleLocalPosition, grapplePoint, Time.deltaTime * 12f);
 
         for (int i = 0; i < RopePoints + 1; i++)
         {
@@ -74,7 +69,7 @@ public class GrapplingRope : MonoBehaviour
                          Mathf.Sin(delta * WaveCount * Mathf.PI) * _spring.Value * AffectCurve.Evaluate(delta);
             _lineRenderer.SetPosition(
                 i, 
-                Vector3.Lerp(gunTipPosition, _currentGrapplePosition, delta) + offset);
+                Vector3.Lerp(gunTipPosition, _currentGrappleLocalPosition, delta) + offset);
         }
         
     }

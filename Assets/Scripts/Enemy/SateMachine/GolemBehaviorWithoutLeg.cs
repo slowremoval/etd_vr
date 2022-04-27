@@ -10,6 +10,7 @@ public class GolemBehaviorWithoutLeg : IGolemBehaviorTarget
     private Transform _targetTransform;
     private ConfigurableJoint _configurableJoint;
     private GolemStates _golemStates;
+    private readonly float _stoppingDistance = 1f;
     
     public GolemBehaviorWithoutLeg(Animator animator, Transform pelvisTransform, ConfigurableJoint configurableJoint, GolemStates golemStates)
     {
@@ -42,7 +43,7 @@ public class GolemBehaviorWithoutLeg : IGolemBehaviorTarget
 
         float distance = Vector3.Distance(_targetTransform.position, _pelvisTransform.position);
         
-        if (distance <= 1.15f)
+        if (distance <= _stoppingDistance)
         {
             _golemStates.SetGolemBehaviorWithoutLegAggressive();
             _unitFollower.StopPathFollowingTask();
@@ -66,7 +67,7 @@ public class GolemBehaviorWithoutLeg : IGolemBehaviorTarget
     {
         _animator.CrossFade(animationHash, 0.03f);
         _targetTransform = currentTarget;
-        _unitFollower = new UnitFollower(_configurableJoint, _pelvisTransform, currentTarget);
+        _unitFollower = new UnitFollower(_configurableJoint, _pelvisTransform, currentTarget, _stoppingDistance);
         Debug.Log("Golem WITHOUT_LEG_IDLE Enter");
     }
 }

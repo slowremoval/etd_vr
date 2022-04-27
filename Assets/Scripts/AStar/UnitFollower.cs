@@ -18,14 +18,16 @@ public class UnitFollower
     //private Quaternion _startRotation;
     private Vector3 _currentWaypoint;
     private Transform _golem;
+    private float _stoppingDistance;
     private CapsuleCollider _golemCollider;
 
-    public UnitFollower(ConfigurableJoint configurableJoint, Transform golem, Transform currentTarget)
+    public UnitFollower(ConfigurableJoint configurableJoint, Transform golem, Transform currentTarget, float stoppingDistance)
     {
         _configurableJoint = configurableJoint;
         _golem = golem;
         _golemCollider = _golem.gameObject.GetComponent<CapsuleCollider>();
         _currentTarget = currentTarget;
+        _stoppingDistance = stoppingDistance;
     }
 
 
@@ -84,7 +86,7 @@ public class UnitFollower
         while (_isTaskCanceled == false)
         {
             _currentWaypoint = _path[0];
-            if (Vector3.Distance(_golemCollider.center, _currentWaypoint) <= 1.14f)
+            if (Vector3.Distance(_golemCollider.center, _currentWaypoint) <= _stoppingDistance)
             {
                 _targetIndex++;
                 if (_targetIndex > _path.Length)

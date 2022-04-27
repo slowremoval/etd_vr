@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Physics_proj
 {
@@ -14,8 +16,8 @@ namespace Physics_proj
         [SerializeField] private Vector3 _moveDirection;
 
         [SerializeField] private float SpeedMultiplier = 0.42f;
-        [SerializeField] private float MaxMoveVectorAxis = 1.19f;
-        [SerializeField] private float MinMoveVectorAxis = 0.42f;
+        [SerializeField] private float MaxMoveVectorAxis = -1f;
+        [SerializeField] private float MinMoveVectorAxis = 1f;
         [SerializeField] private float _walkHeight;
 
         public bool IsMoving = true;
@@ -31,28 +33,12 @@ namespace Physics_proj
 
         private void Start()
         {
-            _moveDirection = Vector3.forward;
+            _moveDirection = GetRandomVector();
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision collision)
         {
-            _moveDirection = -_moveDirection;
-        }
-
-        private void HandleActivate()
-        {
-            if (_isDirectionChanged == false)
-            {
-                _moveDirection = GetRandomVector();
-            }
-        }
-
-        private void HandleDeactivate()
-        {
-            if (_isDirectionChanged)
-            {
-                _isDirectionChanged = false;
-            }
+            _moveDirection = GetRandomVector();
         }
 
         private Vector3 GetRandomVector()
@@ -81,7 +67,7 @@ namespace Physics_proj
 
         private void Move()
         {
-            HandleDeactivate();
+            //HandleDeactivate();
             Vector3 direction = transform.position + _moveDirection;
             _stepanRb.AddForce(Vector3.up * 0.25f, ForceMode.VelocityChange);
             _stepanRb.MovePosition(Vector3.Lerp(transform.position, direction, Time.deltaTime * SpeedMultiplier));

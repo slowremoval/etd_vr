@@ -1087,8 +1087,6 @@ GameObject:
   - component: {fileID: 7408491475081268936}
   - component: {fileID: 7408491475081268937}
   - component: {fileID: 7408491475081268939}
-  - component: {fileID: 7408491475081268938}
-  - component: {fileID: 7408491475081268943}
   - component: {fileID: 4248136445381322578}
   m_Layer: 0
   m_Name: LeftHand Controller
@@ -1291,7 +1289,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.14
+  m_Radius: 0.3
   m_Center: {x: -0.035, y: -0.035, z: -0.05}
 --- !u!114 &7408491475081268939
 MonoBehaviour:
@@ -1331,35 +1329,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   HandVelocityMultiplier: 1
---- !u!135 &7408491475081268938
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7408491475081268941}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.042
-  m_Center: {x: -0.035, y: -0.035, z: -0.05}
---- !u!54 &7408491475081268943
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7408491475081268941}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 3
 --- !u!114 &4248136445381322578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1439,6 +1408,7 @@ MonoBehaviour:
   m_HapticHoverCancelIntensity: 0
   m_HapticHoverCancelDuration: 0
   _playerInventory: {fileID: 5962198415617913928}
+  IsRightHand: 0
 --- !u!1 &7408491475238775722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,7 +1422,6 @@ GameObject:
   - component: {fileID: 7408491475238775733}
   - component: {fileID: 7408491475238775729}
   - component: {fileID: 7408491475238775734}
-  - component: {fileID: 7408491475238775728}
   m_Layer: 11
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1631,19 +1600,6 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   m_HasMigratedActions: 1
---- !u!65 &7408491475238775728
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7408491475238775722}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7408491475413787896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,7 +1784,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add9483c0da81924cbe986e81737a37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpStick: {fileID: -7072225914533787281, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _leftJumpStick: {fileID: -7072225914533787281, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _rightJumpStick: {fileID: 1791621858373244230, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 9216
@@ -2011,8 +1968,6 @@ GameObject:
   - component: {fileID: 7408491476184235441}
   - component: {fileID: 7408491476184235440}
   - component: {fileID: 7408491476184235447}
-  - component: {fileID: 7408491476184235443}
-  - component: {fileID: 7408491476184235444}
   - component: {fileID: 9063584071224167945}
   m_Layer: 0
   m_Name: RightHand Controller
@@ -2215,7 +2170,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.14
+  m_Radius: 0.3
   m_Center: {x: 0.035, y: -0.035, z: -0.05}
 --- !u!114 &7408491476184235447
 MonoBehaviour:
@@ -2255,35 +2210,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -8198699208435500284, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   HandVelocityMultiplier: 1
---- !u!135 &7408491476184235443
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7408491476184235434}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.042
-  m_Center: {x: 0.035, y: -0.035, z: -0.05}
---- !u!54 &7408491476184235444
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7408491476184235434}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 3
 --- !u!114 &9063584071224167945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2363,6 +2289,7 @@ MonoBehaviour:
   m_HapticHoverCancelIntensity: 0
   m_HapticHoverCancelDuration: 0
   _playerInventory: {fileID: 5962198415617913928}
+  IsRightHand: 0
 --- !u!1 &7408491476492135795
 GameObject:
   m_ObjectHideFlags: 0

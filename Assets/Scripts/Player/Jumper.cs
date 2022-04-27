@@ -5,7 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Jumper : MonoBehaviour
 {
-    [SerializeField] private InputActionReference _jumpStick;
+    [SerializeField] private InputActionReference _leftJumpStick;
+    [SerializeField] private InputActionReference _rightJumpStick;
 
     private Rigidbody _rigidbody;
     private CapsuleCollider _playerCollider;
@@ -21,7 +22,8 @@ public class Jumper : MonoBehaviour
         _playerCollider = GetComponentInParent<CapsuleCollider>();
         _continuousMoveProvider = GetComponent<ActionBasedContinuousMoveProvider>();
         
-        _jumpStick.action.started += Jump;
+        _leftJumpStick.action.started += Jump;
+        _rightJumpStick.action.started += Jump;
     }
 
     private void Update()
