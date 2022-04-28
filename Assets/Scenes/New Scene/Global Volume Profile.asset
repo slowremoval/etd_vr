@@ -116,7 +116,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.15
+    m_Value: 1
     min: 0
     max: 1
 --- !u!114 &11400000
@@ -199,10 +199,10 @@ MonoBehaviour:
     m_Value: 0
   quality:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.055
+    m_Value: 0.075
     min: 0
     max: 1
   clamp:

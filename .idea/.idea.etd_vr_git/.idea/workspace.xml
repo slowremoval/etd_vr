@@ -3,13 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d36b1279-5206-4ac4-b481-fa54251e8bf6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.etd_vr_git/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.etd_vr_git/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Stas`s Pelvis Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Stas`s Pelvis Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/New Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/New Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/SateMachine/GolemBehaviorAggressive.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/SateMachine/GolemBehaviorAggressive.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/SateMachine/GolemBehaviorFollowing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/SateMachine/GolemBehaviorFollowing.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/SateMachine/GolemBehaviorWithoutLeg.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/SateMachine/GolemBehaviorWithoutLeg.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/SateMachine/GolemStates.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/SateMachine/GolemStates.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/GrapplingGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/GrapplingGun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +65,7 @@
       <workItem from="1651045140096" duration="7811000" />
       <workItem from="1651058829945" duration="3345000" />
       <workItem from="1651132892255" duration="1330000" />
+      <workItem from="1651143656148" duration="2534000" />
     </task>
     <servers />
   </component>

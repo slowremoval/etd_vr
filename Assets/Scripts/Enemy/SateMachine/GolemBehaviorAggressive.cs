@@ -104,7 +104,7 @@ public class GolemBehaviorAggressive : IGolemBehaviorTarget
         
         Rigidbody targetRb = _target.gameObject.GetComponent<Rigidbody>();
         
-        targetRb.AddForce(toTarget * 1750, ForceMode.Acceleration);
+        targetRb.AddForce(toTarget * 2100, ForceMode.Acceleration);
     }
     
     private async void GetAttack()

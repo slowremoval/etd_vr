@@ -21,7 +21,7 @@ public class GrapplingGun : MonoBehaviour
 
     [SerializeField] private float MaxDistance = 17;
     [SerializeField] private float SpringForce = 90;
-    [SerializeField] private float SpringDamper = 9;
+    [SerializeField] private float SpringDamper = 7.5f;
     [SerializeField] private GameObject Aim;
 
     public Transform GunTip, Player;
