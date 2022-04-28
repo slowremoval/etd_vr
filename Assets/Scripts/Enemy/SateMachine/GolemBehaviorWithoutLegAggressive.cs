@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class GolemBehaviorWithoutLegAggressive : IGolemBehavior
 {
     //todo
-   
+
 
     private float _lightAttackCooldown = 1f;
     private float _attackCooldown = 1.5f;
@@ -14,7 +14,7 @@ public class GolemBehaviorWithoutLegAggressive : IGolemBehavior
     private float _cooldownProgressTime = 0;
 
     private string[] attackArray = new string[2];
-    
+
     private Animator _animator;
     private int _animationLayerIndex = 0;
 
@@ -25,7 +25,7 @@ public class GolemBehaviorWithoutLegAggressive : IGolemBehavior
     {
         _golemStates = golemStates;
         _animator = animator;
-        
+
         attackArray[0] = "Stas_WithoutLeg_Attack";
     }
 
@@ -63,7 +63,7 @@ public class GolemBehaviorWithoutLegAggressive : IGolemBehavior
         Debug.Log($"clipName is {clipName}, clipTime : {clipTime}");
         return clipTime;
     }
-    
+
     public void FixedUpdate()
     {
     }
@@ -77,17 +77,17 @@ public class GolemBehaviorWithoutLegAggressive : IGolemBehavior
     {
         var delay = attackTime * 1000 * 1.99f;
         Debug.Log($"Delay is {delay}");
-        await Task.Delay((int)delay);
+        await Task.Delay((int) delay);
     }
-    
+
     private async void GetAttack()
     {
         int attackNumber = Random.Range(0, attackArray.Length);
         StartAttackAnimation(attackNumber);
-        
+
         float attackTime = GetCurrentAnimationLength(attackNumber);
         await CooldownAsync(attackTime);
-        
-        _golemStates.SetGolemBehaviorIdle();
+
+        _golemStates.SetBehaviorIdleWithoutLeg();
     }
 }

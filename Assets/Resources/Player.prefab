@@ -1088,6 +1088,7 @@ GameObject:
   - component: {fileID: 7408491475081268937}
   - component: {fileID: 7408491475081268939}
   - component: {fileID: 4248136445381322578}
+  - component: {fileID: 4733610431850822070}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -1303,7 +1304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716fd312030059f479e4548a876ff953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInventory: {fileID: 5962198415617913928}
   VelocityProperty:
     m_UseReference: 1
     m_Action:
@@ -1409,6 +1409,19 @@ MonoBehaviour:
   m_HapticHoverCancelDuration: 0
   _playerInventory: {fileID: 5962198415617913928}
   IsRightHand: 0
+--- !u!114 &4733610431850822070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7408491475081268941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27444f97fd9544e99f1d1e3dc69f0cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerInventory: {fileID: 5962198415617913928}
 --- !u!1 &7408491475238775722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,6 +1982,7 @@ GameObject:
   - component: {fileID: 7408491476184235440}
   - component: {fileID: 7408491476184235447}
   - component: {fileID: 9063584071224167945}
+  - component: {fileID: 6837801306378290185}
   m_Layer: 0
   m_Name: RightHand Controller
   m_TagString: Untagged
@@ -2184,7 +2198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716fd312030059f479e4548a876ff953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInventory: {fileID: 5962198415617913928}
   VelocityProperty:
     m_UseReference: 1
     m_Action:
@@ -2290,6 +2303,19 @@ MonoBehaviour:
   m_HapticHoverCancelDuration: 0
   _playerInventory: {fileID: 5962198415617913928}
   IsRightHand: 0
+--- !u!114 &6837801306378290185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7408491476184235434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27444f97fd9544e99f1d1e3dc69f0cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerInventory: {fileID: 5962198415617913928}
 --- !u!1 &7408491476492135795
 GameObject:
   m_ObjectHideFlags: 0

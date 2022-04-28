@@ -6,13 +6,13 @@ public class Follower : MonoBehaviour
     public Vector3 Offset;
 
     private Transform TargetTransform;
-    
+
     [Inject]
     private void Construct(Inventory playerInventory)
     {
         TargetTransform = playerInventory.transform;
     }
-    
+
     void FixedUpdate()
     {
         if (TargetTransform != null)
