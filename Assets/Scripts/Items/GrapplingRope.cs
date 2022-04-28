@@ -13,8 +13,15 @@ public class GrapplingRope
     private float Damper = 14;
     private float Strength = 150;
     private float Velocity = 13;
-    private float WaveCount = 3;
-    private float WaveHeight = 11;
+    
+    private float _minWaveCount = 2f;
+    private float _maxWaveCount = 5f;
+    private float _currentWaveCount;
+    
+    private float MaxWaveHeight = 11f;
+    private float MinWaveHeight = 3.5f;
+    private float _currentWaveHeight;
+    
     public AnimationCurve AffectCurve;
 
     public GrapplingRope(AnimationCurve affectCurve, GrapplingGun grapplingGun, LineRenderer lineRenderer)
@@ -50,8 +57,12 @@ public class GrapplingRope
         {
             _spring.SetVelocity(Velocity);
             _lineRenderer.positionCount = RopePoints + 1;
+            _currentWaveHeight = Random.Range(MinWaveHeight, MaxWaveHeight);
+            _currentWaveCount = Random.Range(_minWaveCount, _maxWaveCount);
+            //Debug.Log($"_currentWaveHeight is : {_currentWaveHeight}");
         }
 
+        
         _spring.SetDamper(Damper);
         _spring.SetStrength(Strength);
         _spring.Update(Time.deltaTime);
@@ -65,8 +76,8 @@ public class GrapplingRope
         for (int i = 0; i < RopePoints + 1; i++)
         {
             var delta = i / (float) RopePoints;
-            var offset = up * WaveHeight * 
-                         Mathf.Sin(delta * WaveCount * Mathf.PI) * _spring.Value * AffectCurve.Evaluate(delta);
+            var offset = up * _currentWaveHeight * 
+                         Mathf.Sin(delta * _currentWaveCount * Mathf.PI) * _spring.Value * AffectCurve.Evaluate(delta);
             _lineRenderer.SetPosition(
                 i, 
                 Vector3.Lerp(gunTipPosition, _currentGrappleLocalPosition, delta) + offset);
