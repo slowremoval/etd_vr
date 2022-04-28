@@ -10,7 +10,7 @@ public class GolemBehaviorWithoutLeg : IGolemBehaviorTarget
     private Transform _targetTransform;
     private ConfigurableJoint _configurableJoint;
     private GolemStates _golemStates;
-    private readonly float _stoppingDistance = 1f;
+    private readonly float _stoppingDistance = 1.15f;
     
     public GolemBehaviorWithoutLeg(Animator animator, Transform pelvisTransform, ConfigurableJoint configurableJoint, GolemStates golemStates)
     {

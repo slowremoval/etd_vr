@@ -10,7 +10,7 @@ public class GolemBehaviorFollowing : IGolemBehaviorTarget
     //private IGolemBehaviorTarget _golemBehaviorTargetImplementation;
     private GolemStates _golemStates;
     private UnitFollower _unitFollower;
-    private float _stoppingDistance = 1f;
+    private float _stoppingDistance = 1.15f;
 
     public GolemBehaviorFollowing(Animator animator, Transform pelvisTransform, ConfigurableJoint configurableJoint, GolemStates golemStates)
     {
@@ -54,7 +54,7 @@ public class GolemBehaviorFollowing : IGolemBehaviorTarget
         
         if (distance <= _stoppingDistance)
         {
-            _golemStates.SetGolemBehaviorAggressive();
+            _golemStates.SetGolemBehaviorAggressive(_targetTransform);
             _unitFollower.StopPathFollowingTask();
             return;
         }

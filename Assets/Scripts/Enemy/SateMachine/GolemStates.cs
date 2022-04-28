@@ -35,7 +35,7 @@ public class GolemStates
         _behaviorsMap[typeof(GolemBehaviorIdleWithoutLeg)] = new GolemBehaviorIdleWithoutLeg(_animator, _detectionManager);
         _behaviorsMap[typeof(GolemBehaviorFollowing)] = new GolemBehaviorFollowing(
             _animator, _pelvisTransform, _configurableJoint, this);
-        _behaviorsMap[typeof(GolemBehaviorAggressive)] = new GolemBehaviorAggressive(_animator, this);
+        _behaviorsMap[typeof(GolemBehaviorAggressive)] = new GolemBehaviorAggressive(_animator, this, _pelvisTransform, _configurableJoint);
         _behaviorsMap[typeof(GolemBehaviorWithoutLeg)] = new GolemBehaviorWithoutLeg(
             _animator, _pelvisTransform, _configurableJoint, this);
         _behaviorsMap[typeof(GolemBehaviorWithoutLegAggressive)] = new GolemBehaviorWithoutLegAggressive(_animator, this);
@@ -82,10 +82,10 @@ public class GolemStates
         SetBehavior(behavior);
     }
 
-    public void SetGolemBehaviorAggressive()
+    public void SetGolemBehaviorAggressive(Transform target)
     {
         IGolemBehavior behavior = GetBehavior<GolemBehaviorAggressive>();
-        SetBehavior(behavior);
+        SetBehavior(behavior, target);
     }
 
     public void SetBehaviorWalking(Transform target)
