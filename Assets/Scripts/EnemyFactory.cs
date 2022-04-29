@@ -35,16 +35,16 @@ public class EnemyFactory : IEnemyFactory
         switch (enemyType)
         {
             case EnemyType.GreyGolem:
-                _diContainer.InstantiatePrefab(_greyGolemPrefab, at, Quaternion.identity, null);
+                _diContainer.InstantiatePrefab(_greyGolemPrefab, at, Quaternion.identity * Quaternion.Euler(0, 180, 0), null);
                 break;
             case EnemyType.WhiteGolem:
-                _diContainer.InstantiatePrefab(_whiteGolemPrefab, at, Quaternion.identity, null);
+                _diContainer.InstantiatePrefab(_whiteGolemPrefab, at, Quaternion.identity * Quaternion.Euler(0, 180, 0), null);
                 break;
-            case EnemyType.Spider:
-                _diContainer.InstantiatePrefab(_spiderPrefab, at, Quaternion.identity, null);
-                break;
-            case EnemyType.SmallSpider:
-                _diContainer.InstantiatePrefab(_smallSpiderPrefab, at, Quaternion.identity, null);
+            // case EnemyType.Spider:
+            //     _diContainer.InstantiatePrefab(_spiderPrefab, at, Quaternion.identity, null);
+            //     break;
+            // case EnemyType.SmallSpider:
+            //     _diContainer.InstantiatePrefab(_smallSpiderPrefab, at, Quaternion.identity, null);
                 break;
             default: break;
         }
