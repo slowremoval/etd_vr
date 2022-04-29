@@ -1,14 +1,13 @@
-using System;
 using UnityEngine;
 
 public class EnemyMarker : MonoBehaviour
 {
-   public EnemyType enemyType;
+    public EnemyType EnemyType;
 
-   private void OnDrawGizmos()
-   {
-      Gizmos.color = Color.red;
-      Gizmos.DrawSphere(transform.position, 0.33f);
-      Gizmos.color = Color.white;
-   }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, 0.33f);
+        Gizmos.color = Color.white;
+    }
 }
