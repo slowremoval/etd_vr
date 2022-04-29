@@ -26,17 +26,28 @@ public class LocationInstaller : MonoInstaller, IInitializable
     {
         Container.Bind<IEnemyFactory>().To<EnemyFactory>().AsSingle();
         Container.Bind<EnemyMarker[]>().FromInstance(EnemyMarkers).AsSingle().Lazy();
-        Debug.Log("Enemy factory binded!");
     }
+    
+    //todo : this!
+    // private void BindItemFactory()
+    // {
+    //     Container.Bind<IItemFactory>().To<ItemFactory>().AsSingle();
+    // }
+    //
+    // private void BindNPCFactory()
+    // {
+    //     Container.Bind<INPCFactory>().To<INPCFactory>().AsSingle();;
+    // }
+
     private void BindEnemySpawner()
     {
-        CharacterSpawner characterSpawner = Container
-            .InstantiatePrefabForComponent<CharacterSpawner>(CharacterSpawnerPrefab, Vector3.zero, Quaternion.identity,
+        EnemySpawner enemySpawner = Container
+            .InstantiatePrefabForComponent<EnemySpawner>(CharacterSpawnerPrefab, Vector3.zero, Quaternion.identity,
                 null);
 
         Container
-            .Bind<CharacterSpawner>()
-            .FromInstance(characterSpawner)
+            .Bind<EnemySpawner>()
+            .FromInstance(enemySpawner)
             .AsSingle()
             .NonLazy();
     }
@@ -64,7 +75,18 @@ public class LocationInstaller : MonoInstaller, IInitializable
 
     public void Initialize()
     {
-        var enemySpawner = Container.Resolve<CharacterSpawner>();
+        var enemySpawner = Container.Resolve<EnemySpawner>();
         enemySpawner.SpawnCharacters();
     }
+    //todo : this!
+    // private void SpawnItems()
+    // {
+    //     var itemFactory = Container.Resolve<IItemFactory>();
+    //     itemFactory.Load();
+    //
+    //     foreach (ItemMarker itemMarker in ItemMarkers)
+    //     {
+    //         itemFactory.Create(itemMarker.ItemType, itemMarker.transform.position);
+    //     }
+    // }
 }

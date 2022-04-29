@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class CharacterSpawner: MonoBehaviour
+public class EnemySpawner: MonoBehaviour
 {
     private IEnemyFactory _characterFactory;
     private EnemyMarker[] _enemyMarkers;
